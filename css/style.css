@@ -1,0 +1,80 @@
+* {
+    font-family: "Times New Roman", Times, serif;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+.container {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+    display: block;
+    position: relative;
+}
+
+@media (min-width: 768px) {
+    .container {
+        width: 750px;
+    }
+}
+
+@media (min-width: 992px) {
+    .container {
+        width: 970px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .container {
+        width: 1170px;
+    }
+}
+
+.headerBar {
+    border: 1px solid black;
+}
+
+.details {
+    display: flex;
+    justify-content: space-around
+}
+
+.gameBoard {
+    border: 1px solid black
+}
+
+ul {
+    display: flex;
+    list-style-type: none;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    font-size: 400%;
+    padding-left: 0;
+}
+
+.card {
+    width: 10%;
+    text-align: center;
+    margin: 2%;
+    background-color: cadetblue;
+}
+
+.card i {
+    opacity: 0%;
+}
+
+.show i {
+    opacity: 100%;
+}
+
+.footerBar {
+    border: 1px solid black
+}
+
+.title {
+    text-align: center;
+}
