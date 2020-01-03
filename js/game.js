@@ -5,7 +5,10 @@ const bestScore = document.getElementById("score");
 const stopper = document.getElementById("stopper");
 const moves = document.getElementById("moves");
 
-const level = 4;
+const stopperModal = document.getElementById("stopperModal");
+const movesModal = document.getElementById("movesModal");
+
+const level = 2;
 
 const createCardList = () => {
     let icons = faIcons.slice(0, faIcons.length - (faIcons.length - level));
@@ -33,6 +36,9 @@ class Game {
         this.twoCard = [];
         this.clickCounter = 0;
         this.timerTime = 0;
+        this.firstClick = false;
+        stopper.textContent = "00:00:00";
+        stopperModal.textContent = "00:00:00";
         // bestScore.textContent = // read from file
     };
 
@@ -40,7 +46,6 @@ class Game {
         this.cards = shuffle(this.cards);
         this.addToGameBoard();
         this.setClickable(this.cards);
-        this.startStopper();
     };
 
     restart = () => {
@@ -51,6 +56,7 @@ class Game {
         });
         this.start();
         moves.textContent = 0;
+        movesModal.textContent = 0;
         clearInterval(this.myInterval);
     };
 
@@ -67,7 +73,8 @@ class Game {
             if (numOfHours < 10) numOfHours = "0" + numOfHours;
             if (numOfSecs < 10) numOfSecs = "0" + numOfSecs;
             if (numOfMins < 10) numOfMins = "0" + numOfMins;
-            stopper.textContent = numOfHours + ":" + numOfMins + ":" + numOfSecs;
+            stopperModal.textContent = stopper.textContent =
+                numOfHours + ":" + numOfMins + ":" + numOfSecs;
         }, 1000);
     };
 
@@ -86,6 +93,7 @@ class Game {
         });
     };
 
+    // https://gamedev.stackexchange.com/questions/43962/how-to-devise-a-scoring-algorithm-based-on-elapsed-time-and-number-of-moves
     getScore = () => {
         const minimumMoves = this.cards.length;
         const minimumTime = this.cards.length;
@@ -104,16 +112,26 @@ class Game {
     };
 
     onClickHandelForCards = (card, timeoutCallback) => {
+        if (!this.firstClick) {
+            this.startStopper();
+            this.firstClick = true;
+        }
+
         if (this.twoCard.length < 2) {
             this.twoCard.push(card);
             card.setVisible(true);
 
             card.cardObj.onclick = null; // disable onclick event until check eqaualiti twoCards
 
-            moves.textContent = ++this.clickCounter;
+            movesModal.textContent = moves.textContent = ++this.clickCounter;
             if (this.isFinished()) {
                 clearInterval(this.myInterval);
-                actualscore.textContent = this.getScore();
+                actualscore.textContent = this.getScore().toFixed(2);
+
+                // Open nav when finished game ---- from ./modal.js
+                toggleClasses();
+                showModal();
+                showModalChildren();
             }
 
             if (

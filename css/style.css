@@ -4,16 +4,17 @@
 
 html,
 body {
-    height: 100%;
+    background-color: aliceblue;
 }
 
 .container {
-    padding-right: 15px;
-    padding-left: 15px;
     margin-right: auto;
     margin-left: auto;
-    display: block;
     position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
 @media (min-width: 768px) {
@@ -34,33 +35,55 @@ body {
     }
 }
 
+.game {
+    display: block
+}
+
 .headerBar {
-    border: 1px solid black;
+    width: 100%;
+    margin-bottom: 20px
 }
 
 .details {
     display: flex;
-    justify-content: space-around
+    justify-content: space-around;
+    font-size: large;
 }
 
 .gameBoard {
-    border: 1px solid black
+    border: 1px solid black;
+    width: 100%;
+    background: #716F71;
+    border-radius: 4px;
+    box-shadow: 8px 9px 26px 0 rgba(46, 61, 73, 0.5);
 }
 
 ul {
     display: flex;
     list-style-type: none;
-    justify-content: space-around;
+    justify-content: center;
     flex-wrap: wrap;
     font-size: 400%;
-    padding-left: 0;
+    padding-inline-start: 0;
+}
+
+.restart i {
+    color: black;
+    cursor: pointer;
 }
 
 .card {
-    width: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 125px;
+    height: 125px;
     text-align: center;
     margin: 2%;
-    background-color: cadetblue;
+    background-color: black;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
 }
 
 .card i {
@@ -71,10 +94,81 @@ ul {
     opacity: 100%;
 }
 
+i {
+    color: white;
+}
+
 .footerBar {
-    border: 1px solid black
+    border: 1px solid black;
+    width: 100%;
 }
 
 .title {
     text-align: center;
+    font-size: xx-large;
+    margin-bottom: 40px;
+}
+
+
+/* "Save your score" form */
+
+.modal {
+    background-color: #fff;
+    padding: 2em 3em;
+    text-align: center;
+    border-radius: 0.5em;
+    display: none;
+}
+
+.modal.is-active {
+    display: block;
+}
+
+.modal-image {
+    width: 40px;
+    height: 40px;
+    margin: 0 auto;
+    border-radius: 50%;
+    box-shadow: 0 0 0 2px #48db71;
+    padding: 11px 10px 2px;
+    margin-bottom: 2em;
+}
+
+h1 {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-bottom: 0.5em;
+}
+
+p {
+    margin-bottom: 2em;
+    color: #666;
+}
+
+button {
+    font-size: 1.25em;
+    font-weight: bold;
+    background-color: #000;
+    border: none;
+    padding: 0.5em 1em;
+    color: #fff;
+    box-shadow: 0 0 0 2px #000 inset;
+    border-radius: 0.25em;
+    cursor: pointer;
+    transition: background 0.4s ease, color 0.4s ease;
+}
+
+button:hover {
+    box-shadow: 0 0 0 2px #000 inset;
+    color: #000;
+    background-color: transparent;
+}
+
+#username {
+    display: block;
+    margin-bottom: 2em;
+}
+
+.modal-score {
+    margin-bottom: 2em;
 }

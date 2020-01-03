@@ -12,20 +12,42 @@
 
 <body>
     <div class="container">
-        <div class="headerBar">
-            <h1 class="title">Picture Match</h1>
-            <div class="details">
-                <div class="stopper">Time: <span id="stopper">00:00:00</span></div>
-                <div class="moves">Moves: <span id="moves">0</span></div>
-                <div class="restart">Restart</div>
+        <div class="wrap">
+            <div class="modal js-modal">
+                <div class="modal-image">
+                    <svg viewBox="0 0 32 32" style="fill:#48DB71">
+              <path d="M1 14 L5 10 L13 18 L27 4 L31 8 L13 26 z"></path>
+            </svg>
+                </div>
+                <h1>Nice job!</h1>
+                <div class="modal-score">
+                    <div class="stopper">
+                        Time: <span id="stopperModal">00:00:00</span>
+                    </div>
+                    <div class="moves">Moves: <span id="movesModal">0</span></div>
+                    <div class="score">Your score: <span id="actualscore">0</span></div>
+                </div>
+                <button class="js-close">Restart</button>
             </div>
         </div>
-        <div class="gameBoard"></div>
-        <div class="footerBar details">
-            <div class="score">Your score: <span id="actualscore">0</span></div>
-            <div class="score">Best score: <span id="score">0</span></div>
+
+        <div class="game">
+            <div class="headerBar">
+                <h1 class="title">Picture Match</h1>
+                <div class="details">
+                    <div class="stopper">Time: <span id="stopper">00:00:00</span></div>
+                    <div class="moves">Moves: <span id="moves">0</span></div>
+                    <div class="restart"><i class="fa fa-repeat"></i></div>
+                </div>
+            </div>
+
+            <div class="gameBoard"></div>
         </div>
     </div>
+    <!-- for modal form -->
+    <script src="https://unpkg.com/dynamics.js@1.1.5"></script>
+    <!-- ////////////// -->
+    <script src="./js/modal.js"></script>
     <script src="./js/utils.js"></script>
     <script src="./js/card.js"></script>
     <script src="./js/game.js"></script>
