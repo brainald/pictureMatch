@@ -8,7 +8,7 @@ const moves = document.getElementById("moves");
 const stopperModal = document.getElementById("stopperModal");
 const movesModal = document.getElementById("movesModal");
 
-const level = 2;
+const level = 6;
 
 const createCardList = () => {
     let icons = faIcons.slice(0, faIcons.length - (faIcons.length - level));
@@ -39,7 +39,6 @@ class Game {
         this.firstClick = false;
         stopper.textContent = "00:00:00";
         stopperModal.textContent = "00:00:00";
-        // bestScore.textContent = // read from file
     };
 
     start = () => {
