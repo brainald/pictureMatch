@@ -5,6 +5,11 @@
 html,
 body {
     background-image: radial-gradient( circle at top right, aliceblue, lightgreen);
+    min-height: 100%;
+    height: auto;
+    overflow-x: hidden;
+    top: 0;
+    left: 0;
 }
 
 .container {
