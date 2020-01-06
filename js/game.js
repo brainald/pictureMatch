@@ -28,11 +28,13 @@ const createCardList = () => {
 class Game {
     constructor(cards) {
         this.myInterval = null;
+        this.mySetTimeout = null;
         this.cards = cards;
         this.init();
     }
 
     init = () => {
+        clearTimeout(this.mySetTimeout);
         this.twoCard = [];
         this.clickCounter = 0;
         this.timerTime = 0;
@@ -137,7 +139,7 @@ class Game {
                 this.twoCard.length === 2 &&
                 !Card.isEqual(this.twoCard[0], this.twoCard[1])
             ) {
-                setTimeout(() => {
+                this.mySetTimeout = setTimeout(() => {
                     timeoutCallback();
                 }, 2000);
             } else if (
