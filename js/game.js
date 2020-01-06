@@ -8,7 +8,7 @@ const moves = document.getElementById("moves");
 const stopperModal = document.getElementById("stopperModal");
 const movesModal = document.getElementById("movesModal");
 
-const level = 2;
+const level = 6;
 
 const createCardList = () => {
     let icons = faIcons.slice(0, faIcons.length - (faIcons.length - level));
