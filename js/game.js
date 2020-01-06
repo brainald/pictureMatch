@@ -39,7 +39,6 @@ class Game {
         this.firstClick = false;
         stopper.textContent = "00:00:00";
         stopperModal.textContent = "00:00:00";
-        // bestScore.textContent = // read from file
     };
 
     start = () => {

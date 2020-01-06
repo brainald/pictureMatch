@@ -50,6 +50,20 @@ body {
     font-size: large;
 }
 
+.details .fa {
+    color: black;
+    font-size: 28px;
+}
+
+.details span {
+    font-weight: 500;
+    font-size: 20px;
+}
+
+.restart {
+    font-weight: 900;
+}
+
 .gameBoard {
     border: 1px solid black;
     width: 100%;
@@ -115,6 +129,19 @@ i {
     font-size: xx-large;
     letter-spacing: 0.5em;
     margin-bottom: 40px;
+}
+
+@media (max-width: 600px) {
+    .card {
+        width: 90px;
+        height: 90px;
+    }
+    .details .fa {
+        font-size: 26px;
+    }
+    .title {
+        font-size: 36px;
+    }
 }
 
 
