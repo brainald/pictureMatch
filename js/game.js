@@ -5,10 +5,14 @@ const bestScore = document.getElementById("score");
 const stopper = document.getElementById("stopper");
 const moves = document.getElementById("moves");
 
+const tapSound = document.getElementById("tap");
+const successSound = document.getElementById("success");
+const tadaSound = document.getElementById("tada");
+
 const stopperModal = document.getElementById("stopperModal");
 const movesModal = document.getElementById("movesModal");
 
-const level = 6;
+const level = 3;
 
 const createCardList = () => {
     let icons = faIcons.slice(0, faIcons.length - (faIcons.length - level));
@@ -121,6 +125,7 @@ class Game {
         if (this.twoCard.length < 2) {
             this.twoCard.push(card);
             card.setVisible(true);
+            tapSound.play();
 
             card.cardObj.onclick = null; // disable onclick event until check eqaualiti twoCards
 
@@ -133,6 +138,7 @@ class Game {
                 toggleClasses();
                 showModal();
                 showModalChildren();
+                tadaSound.play();
             }
 
             if (
@@ -146,6 +152,8 @@ class Game {
                 this.twoCard.length === 2 &&
                 Card.isEqual(this.twoCard[0], this.twoCard[1])
             ) {
+                successSound.currentTime = 0;
+                successSound.play();
                 this.twoCard = [];
             }
         }
