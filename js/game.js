@@ -12,7 +12,7 @@ const tadaSound = document.getElementById("tada");
 const stopperModal = document.getElementById("stopperModal");
 const movesModal = document.getElementById("movesModal");
 
-const level = 3;
+const level = 7;
 
 const createCardList = () => {
     let icons = faIcons.slice(0, faIcons.length - (faIcons.length - level));

@@ -141,19 +141,6 @@ i {
     margin-bottom: 40px;
 }
 
-@media (max-width: 600px) {
-    .card {
-        width: 90px;
-        height: 90px;
-    }
-    .details .fa {
-        font-size: 26px;
-    }
-    .title {
-        font-size: 36px;
-    }
-}
-
 
 /* "Save your score" form */
 
@@ -162,6 +149,7 @@ i {
     padding: 2em 3em;
     text-align: center;
     border-radius: 0.5em;
+    font-size: 20px;
     display: none;
 }
 
@@ -171,7 +159,6 @@ i {
 
 .modal-image {
     width: 40px;
-    height: 40px;
     margin: 0 auto;
     border-radius: 50%;
     box-shadow: 0 0 0 2px #48db71;
@@ -216,4 +203,27 @@ button:hover {
 
 .modal-score {
     margin-bottom: 2em;
+    line-height: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+@media (max-width: 600px) {
+    .card {
+        width: 75px;
+        height: 75px;
+    }
+    .details .fa {
+        font-size: 26px;
+    }
+    .title {
+        font-size: 36px;
+    }
+    .modal {
+        font-size: 15px;
+    }
+    .modal-score {
+        line-height: 20px;
+    }
 }
