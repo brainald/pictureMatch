@@ -22,26 +22,10 @@ body {
     flex-direction: column;
 }
 
-@media (min-width: 768px) {
-    .container {
-        width: 750px;
-    }
-}
-
-@media (min-width: 992px) {
-    .container {
-        width: 970px;
-    }
-}
-
-@media (min-width: 1200px) {
-    .container {
-        width: 1170px;
-    }
-}
-
 .game {
-    display: block
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .headerBar {
@@ -70,8 +54,7 @@ body {
 }
 
 .gameBoard {
-    width: 70%;
-    margin-left: 15%;
+    width: 65%;
     border: 1px solid black;
     background: #716F71;
     border-radius: 4px;
@@ -106,19 +89,32 @@ ul {
     box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
 }
 
-@media (max-width: 600px) {
-    .card {
-        width: 90px;
-        height: 90px;
-    }
-    .gameBoard {
-        width: 100%;
-        margin-left: 0;
-    }
-}
-
 .card i {
     opacity: 0%;
+}
+
+.show {
+    transform: rotateY(0);
+    background: #02b3e4;
+    cursor: default;
+    animation-name: flipInY;
+    backface-visibility: visible !important;
+    animation-duration: .75s;
+}
+
+.unmatched {
+    animation-name: pulse;
+    backface-visibility: visible !important;
+    animation-duration: .75s;
+    background: #e2043b;
+}
+
+.matched {
+    cursor: default;
+    background: #48db71;
+    animation-name: rubberBand;
+    backface-visibility: visible !important;
+    animation-duration: .75s;
 }
 
 .show i {
@@ -142,7 +138,68 @@ i {
 }
 
 
-/* "Save your score" form */
+/* Animations */
+
+@keyframes flipInY {
+    from {
+        transform: perspective(400px) rotate3d(0, 1, 0, 90deg);
+        animation-timing-function: ease-in;
+        opacity: 0;
+    }
+    40% {
+        transform: perspective(400px) rotate3d(0, 1, 0, -20deg);
+        animation-timing-function: ease-in;
+    }
+    60% {
+        transform: perspective(400px) rotate3d(0, 1, 0, 10deg);
+        opacity: 1;
+    }
+    80% {
+        transform: perspective(400px) rotate3d(0, 1, 0, -5deg);
+    }
+    to {
+        transform: perspective(400px);
+    }
+}
+
+@keyframes rubberBand {
+    from {
+        transform: scale3d(1, 1, 1);
+    }
+    30% {
+        transform: scale3d(1.25, 0.75, 1);
+    }
+    40% {
+        transform: scale3d(0.75, 1.25, 1);
+    }
+    50% {
+        transform: scale3d(1.15, 0.85, 1);
+    }
+    65% {
+        transform: scale3d(.95, 1.05, 1);
+    }
+    75% {
+        transform: scale3d(1.05, .95, 1);
+    }
+    to {
+        transform: scale3d(1, 1, 1);
+    }
+}
+
+@keyframes pulse {
+    from {
+        transform: scale3d(1, 1, 1);
+    }
+    50% {
+        transform: scale3d(1.2, 1.2, 1.2);
+    }
+    to {
+        transform: scale3d(1, 1, 1);
+    }
+}
+
+
+/* Modal */
 
 .modal {
     background-color: #fff;
@@ -196,11 +253,6 @@ button:hover {
     background-color: transparent;
 }
 
-#username {
-    display: block;
-    margin-bottom: 2em;
-}
-
 .modal-score {
     margin-bottom: 2em;
     line-height: 30px;
@@ -209,10 +261,35 @@ button:hover {
     align-items: flex-start;
 }
 
+
+/* Media queries */
+
+@media (min-width: 768px) {
+    .container {
+        width: 750px;
+    }
+}
+
+@media (min-width: 992px) {
+    .container {
+        width: 970px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .container {
+        width: 1170px;
+    }
+}
+
 @media (max-width: 600px) {
     .card {
-        width: 75px;
-        height: 75px;
+        width: 65px;
+        height: 65px;
+    }
+    .gameBoard {
+        width: 100%;
+        margin-left: 0;
     }
     .details .fa {
         font-size: 26px;

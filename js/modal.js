@@ -97,7 +97,7 @@ function showModalChildren() {
 }
 
 function showGame() {
-    gameDiv.style.display = "block";
+    gameDiv.style.display = "flex";
 }
 
 function toggleClasses() {

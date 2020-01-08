@@ -12,7 +12,7 @@ const tadaSound = document.getElementById("tada");
 const stopperModal = document.getElementById("stopperModal");
 const movesModal = document.getElementById("movesModal");
 
-const level = 7;
+const level = 8;
 
 const createCardList = () => {
     let icons = faIcons.slice(0, faIcons.length - (faIcons.length - level));
@@ -37,8 +37,16 @@ class Game {
         this.init();
     }
 
+    clearAllCardsClasses() {
+        this.cards.forEach(card => {
+            card.cardObj.classList.remove("matched");
+            card.cardObj.classList.remove("unmatched");
+        });
+    }
+
     init = () => {
         clearTimeout(this.mySetTimeout);
+        this.clearAllCardsClasses();
         this.twoCard = [];
         this.clickCounter = 0;
         this.timerTime = 0;
@@ -109,10 +117,27 @@ class Game {
         return score;
     };
 
+    /**
+     * @param {string} command         Now only 'add' or 'remove'.
+     * @param {string} className       A CSS class name.
+     */
+    manageStyleClassToCards(command, classname) {
+        if (command === "remove") {
+            this.twoCard[0].cardObj.classList.remove(classname);
+            this.twoCard[1].cardObj.classList.remove(classname);
+        } else if (command === "add") {
+            this.twoCard[0].cardObj.classList.add(classname);
+            this.twoCard[1].cardObj.classList.add(classname);
+        } else {
+            new Error("Command '" + command + "' is not implemeted yet!");
+        }
+    }
+
     timeoutCallback = () => {
         this.setClickable(this.twoCard);
         this.twoCard[0].setVisible(false);
         this.twoCard[1].setVisible(false);
+        this.manageStyleClassToCards("remove", "unmatched");
         this.twoCard = [];
     };
 
@@ -145,6 +170,7 @@ class Game {
                 this.twoCard.length === 2 &&
                 !Card.isEqual(this.twoCard[0], this.twoCard[1])
             ) {
+                this.manageStyleClassToCards("add", "unmatched");
                 this.mySetTimeout = setTimeout(() => {
                     timeoutCallback();
                 }, 2000);
@@ -152,6 +178,7 @@ class Game {
                 this.twoCard.length === 2 &&
                 Card.isEqual(this.twoCard[0], this.twoCard[1])
             ) {
+                this.manageStyleClassToCards("add", "matched");
                 successSound.currentTime = 0;
                 successSound.play();
                 this.twoCard = [];
