@@ -2,8 +2,7 @@
     font-family: "Times New Roman", Times, serif;
 }
 
-html,
-body {
+html, body {
     background-image: radial-gradient( circle at top right, aliceblue, lightgreen);
     min-height: 100%;
     height: auto;
@@ -137,7 +136,6 @@ i {
     margin-bottom: 40px;
 }
 
-
 /* Animations */
 
 @keyframes flipInY {
@@ -197,7 +195,6 @@ i {
         transform: scale3d(1, 1, 1);
     }
 }
-
 
 /* Modal */
 
@@ -261,7 +258,6 @@ button:hover {
     align-items: flex-start;
 }
 
-
 /* Media queries */
 
 @media (min-width: 768px) {
@@ -302,5 +298,8 @@ button:hover {
     }
     .modal-score {
         line-height: 20px;
+    }
+    .fa {
+        font-size: 30px;
     }
 }
