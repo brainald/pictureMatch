@@ -1,306 +1,444 @@
-* {
-    font-family: "Times New Roman", Times, serif;
+:root{
+  --bgcolor1:1;
+  --bgcolor2:120;
 }
 
-html,
+* {
+  font-family: "Times New Roman", Times, serif;
+}
+
 body {
-    background-image: radial-gradient( circle at top right, aliceblue, lightgreen);
-    min-height: 100%;
-    height: auto;
-    overflow-x: hidden;
-    top: 0;
-    left: 0;
+  background-image: radial-gradient(circle at top right, hsl(var(--bgcolor1), 76%, 60%), hsl(var(--bgcolor2), 73%, 75%));
+  min-height: 100%;
+  height: auto;
+  overflow-x: hidden;
+  top: 0;
+  left: 0;
 }
 
 .container {
-    margin-right: auto;
-    margin-left: auto;
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+  margin-right: auto;
+  margin-left: auto;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 .game {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
 }
 
 .headerBar {
-    width: 100%;
-    margin-bottom: 20px
+  width: 100%;
+  margin-bottom: 20px;
 }
 
 .details {
-    display: flex;
-    justify-content: space-around;
-    font-size: large;
+  display: flex;
+  justify-content: space-around;
+  font-size: large;
 }
 
 .details .fa {
-    color: black;
-    font-size: 28px;
+  color: black;
+  font-size: 28px;
 }
 
 .details span {
-    font-weight: 500;
-    font-size: 20px;
+  font-weight: 500;
+  font-size: 20px;
 }
 
 .restart {
-    font-weight: 900;
+  font-weight: 900;
 }
 
 .gameBoard {
-    width: 65%;
-    border: 1px solid black;
-    background: #716F71;
-    border-radius: 4px;
-    box-shadow: 8px 9px 26px 0 rgba(46, 61, 73, 0.5);
+  width: 65%;
+  border: 1px solid black;
+  background: #716f71;
+  border-radius: 4px;
+  box-shadow: 8px 9px 26px 0 rgba(46, 61, 73, 0.5);
 }
 
 ul {
-    display: flex;
-    list-style-type: none;
-    justify-content: center;
-    flex-wrap: wrap;
-    font-size: 400%;
-    padding-inline-start: 0;
+  display: flex;
+  list-style-type: none;
+  justify-content: center;
+  flex-wrap: wrap;
+  font-size: 400%;
+  padding-inline-start: 0;
 }
 
 .restart i {
-    color: black;
-    cursor: pointer;
+  color: black;
+  cursor: pointer;
 }
 
 .card {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 125px;
-    height: 125px;
-    text-align: center;
-    margin: 2%;
-    background-color: black;
-    border-radius: 5px;
-    cursor: pointer;
-    box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 125px;
+  height: 125px;
+  text-align: center;
+  margin: 2%;
+  background-color: black;
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
 }
 
 .card i {
-    opacity: 0%;
+  opacity: 0%;
 }
 
 .show {
-    transform: rotateY(0);
-    background: #02b3e4;
-    cursor: default;
-    animation-name: flipInY;
-    backface-visibility: visible !important;
-    animation-duration: .75s;
+  transform: rotateY(0);
+  background: #02b3e4;
+  cursor: default;
+  animation-name: flipInY;
+  backface-visibility: visible !important;
+  animation-duration: 0.75s;
 }
 
 .unmatched {
-    animation-name: pulse;
-    backface-visibility: visible !important;
-    animation-duration: .75s;
-    background: #e2043b;
+  animation-name: pulse;
+  backface-visibility: visible !important;
+  animation-duration: 0.75s;
+  background: #e2043b;
 }
 
 .matched {
-    cursor: default;
-    background: #48db71;
-    animation-name: rubberBand;
-    backface-visibility: visible !important;
-    animation-duration: .75s;
+  cursor: default;
+  background: #48db71;
+  animation-name: rubberBand;
+  backface-visibility: visible !important;
+  animation-duration: 0.75s;
 }
 
 .show i {
-    opacity: 100%;
+  opacity: 100%;
 }
 
 i {
-    color: white;
+  color: white;
 }
 
 .footerBar {
-    border: 1px solid black;
-    width: 100%;
+  border: 1px solid black;
+  width: 100%;
 }
 
 .title {
-    text-align: center;
-    font-size: xx-large;
-    letter-spacing: 0.5em;
-    margin-bottom: 40px;
+  text-align: center;
+  font-size: xx-large;
+  letter-spacing: 0.5em;
+  margin-bottom: 40px;
 }
-
 
 /* Animations */
 
 @keyframes flipInY {
-    from {
-        transform: perspective(400px) rotate3d(0, 1, 0, 90deg);
-        animation-timing-function: ease-in;
-        opacity: 0;
-    }
-    40% {
-        transform: perspective(400px) rotate3d(0, 1, 0, -20deg);
-        animation-timing-function: ease-in;
-    }
-    60% {
-        transform: perspective(400px) rotate3d(0, 1, 0, 10deg);
-        opacity: 1;
-    }
-    80% {
-        transform: perspective(400px) rotate3d(0, 1, 0, -5deg);
-    }
-    to {
-        transform: perspective(400px);
-    }
+  from {
+    transform: perspective(400px) rotate3d(0, 1, 0, 90deg);
+    animation-timing-function: ease-in;
+    opacity: 0;
+  }
+  40% {
+    transform: perspective(400px) rotate3d(0, 1, 0, -20deg);
+    animation-timing-function: ease-in;
+  }
+  60% {
+    transform: perspective(400px) rotate3d(0, 1, 0, 10deg);
+    opacity: 1;
+  }
+  80% {
+    transform: perspective(400px) rotate3d(0, 1, 0, -5deg);
+  }
+  to {
+    transform: perspective(400px);
+  }
 }
 
 @keyframes rubberBand {
-    from {
-        transform: scale3d(1, 1, 1);
-    }
-    30% {
-        transform: scale3d(1.25, 0.75, 1);
-    }
-    40% {
-        transform: scale3d(0.75, 1.25, 1);
-    }
-    50% {
-        transform: scale3d(1.15, 0.85, 1);
-    }
-    65% {
-        transform: scale3d(.95, 1.05, 1);
-    }
-    75% {
-        transform: scale3d(1.05, .95, 1);
-    }
-    to {
-        transform: scale3d(1, 1, 1);
-    }
+  from {
+    transform: scale3d(1, 1, 1);
+  }
+  30% {
+    transform: scale3d(1.25, 0.75, 1);
+  }
+  40% {
+    transform: scale3d(0.75, 1.25, 1);
+  }
+  50% {
+    transform: scale3d(1.15, 0.85, 1);
+  }
+  65% {
+    transform: scale3d(0.95, 1.05, 1);
+  }
+  75% {
+    transform: scale3d(1.05, 0.95, 1);
+  }
+  to {
+    transform: scale3d(1, 1, 1);
+  }
 }
 
 @keyframes pulse {
-    from {
-        transform: scale3d(1, 1, 1);
-    }
-    50% {
-        transform: scale3d(1.2, 1.2, 1.2);
-    }
-    to {
-        transform: scale3d(1, 1, 1);
-    }
+  from {
+    transform: scale3d(1, 1, 1);
+  }
+  50% {
+    transform: scale3d(1.2, 1.2, 1.2);
+  }
+  to {
+    transform: scale3d(1, 1, 1);
+  }
 }
-
 
 /* Modal */
 
 .modal {
-    background-color: #fff;
-    padding: 2em 3em;
-    text-align: center;
-    border-radius: 0.5em;
-    font-size: 20px;
-    display: none;
+  background-color: #fff;
+  padding: 2em 3em;
+  text-align: center;
+  border-radius: 0.5em;
+  font-size: 20px;
+  display: none;
 }
 
 .modal.is-active {
-    display: block;
+  display: block;
 }
 
 .modal-image {
-    width: 40px;
-    margin: 0 auto;
-    border-radius: 50%;
-    box-shadow: 0 0 0 2px #48db71;
-    padding: 11px 10px 2px;
-    margin-bottom: 2em;
+  width: 40px;
+  margin: 0 auto;
+  border-radius: 50%;
+  box-shadow: 0 0 0 2px #48db71;
+  padding: 11px 10px 2px;
+  margin-bottom: 2em;
 }
 
 h1 {
-    font-size: 1.5em;
-    font-weight: bold;
-    margin-bottom: 0.5em;
+  font-size: 1.5em;
+  font-weight: bold;
+  margin-bottom: 0.5em;
 }
 
 p {
-    margin-bottom: 2em;
-    color: #666;
+  margin-bottom: 2em;
+  color: #666;
 }
 
 button {
-    font-size: 1.25em;
-    font-weight: bold;
-    background-color: #000;
-    border: none;
-    padding: 0.5em 1em;
-    color: #fff;
-    box-shadow: 0 0 0 2px #000 inset;
-    border-radius: 0.25em;
-    cursor: pointer;
-    transition: background 0.4s ease, color 0.4s ease;
+  font-size: 1.25em;
+  font-weight: bold;
+  background-color: #000;
+  border: none;
+  padding: 0.5em 1em;
+  color: #fff;
+  box-shadow: 0 0 0 2px #000 inset;
+  border-radius: 0.25em;
+  cursor: pointer;
+  transition: background 0.4s ease, color 0.4s ease;
 }
 
 button:hover {
-    box-shadow: 0 0 0 2px #000 inset;
-    color: #000;
-    background-color: transparent;
+  box-shadow: 0 0 0 2px #000 inset;
+  color: #000;
+  background-color: transparent;
 }
 
 .modal-score {
-    margin-bottom: 2em;
-    line-height: 30px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+  margin-bottom: 2em;
+  line-height: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
+/* Input type range */
+
+.rangeDiv {
+  display: inline;
+}
+
+.rangeDiv span {
+  top: -5px;
+}
+
+input[type="range"].slider {
+  -webkit-appearance: none;
+  /* width: 100%; */
+  margin: 2.7px 0;
+}
+
+input[type="range"].slider:focus {
+  outline: none;
+}
+
+input[type="range"].slider::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 25.6px;
+  cursor: pointer;
+  box-shadow: 1px 1px 1px #010000, 0px 0px 1px #1b0000;
+  background: #2d554d;
+  border-radius: 0px;
+  border: 0px solid #010101;
+}
+
+input[type="range"].slider::-webkit-slider-thumb {
+  box-shadow: 1.6px 1.6px 6.9px rgba(255, 124, 122, 0.6),
+    0px 0px 1.6px rgba(255, 149, 148, 0.6);
+  border: 0px solid #ff0900;
+  height: 31px;
+  width: 15px;
+  border-radius: 0px;
+  background: #ff4c37;
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: -2.7px;
+}
+
+input[type="range"].slider:focus::-webkit-slider-runnable-track {
+  background: #36665c;
+}
+
+input[type="range"].slider::-moz-range-track {
+  width: 100%;
+  height: 25.6px;
+  cursor: pointer;
+  box-shadow: 1px 1px 1px #010000, 0px 0px 1px #1b0000;
+  background: #2d554d;
+  border-radius: 0px;
+  border: 0px solid #010101;
+}
+
+input[type="range"].slider::-moz-range-thumb {
+  box-shadow: 1.6px 1.6px 6.9px rgba(255, 124, 122, 0.6),
+    0px 0px 1.6px rgba(255, 149, 148, 0.6);
+  border: 0px solid #ff0900;
+  height: 31px;
+  width: 15px;
+  border-radius: 0px;
+  background: #ff4c37;
+  cursor: pointer;
+}
+
+input[type="range"].slider::-ms-track {
+  width: 100%;
+  height: 25.6px;
+  cursor: pointer;
+  background: transparent;
+  border-color: transparent;
+  color: transparent;
+}
+
+input[type="range"].slider::-ms-fill-lower {
+  background: #24443e;
+  border: 0px solid #010101;
+  border-radius: 0px;
+  box-shadow: 1px 1px 1px #010000, 0px 0px 1px #1b0000;
+}
+
+input[type="range"].slider::-ms-fill-upper {
+  background: #2d554d;
+  border: 0px solid #010101;
+  border-radius: 0px;
+  box-shadow: 1px 1px 1px #010000, 0px 0px 1px #1b0000;
+}
+
+input[type="range"].slider::-ms-thumb {
+  box-shadow: 1.6px 1.6px 6.9px rgba(255, 124, 122, 0.6),
+    0px 0px 1.6px rgba(255, 149, 148, 0.6);
+  border: 0px solid #ff0900;
+  height: 31px;
+  width: 15px;
+  border-radius: 0px;
+  background: #ff4c37;
+  cursor: pointer;
+  height: 25.6px;
+}
+
+input[type="range"].slider:focus::-ms-fill-lower {
+  background: #2d554d;
+}
+
+input[type="range"].slider:focus::-ms-fill-upper {
+  background: #36665c;
+}
+
+.range-slider__value {
+  display: inline-block;
+  position: relative;
+  width: 22px;
+  color: #fff;
+  line-height: 20px;
+  text-align: center;
+  border-radius: 3px;
+  background: #2c3e50;
+  padding: 5px 10px;
+  margin-left: 8px;
+}
+
+.range-slider__value::after {
+  position: absolute;
+  top: 8px;
+  left: -7px;
+  width: 0;
+  height: 0;
+  border-top: 7px solid transparent;
+  border-right: 7px solid #2c3e50;
+  border-bottom: 7px solid transparent;
+  content: "";
+}
 
 /* Media queries */
 
 @media (min-width: 768px) {
-    .container {
-        width: 750px;
-    }
+  .container {
+    width: 750px;
+  }
 }
 
 @media (min-width: 992px) {
-    .container {
-        width: 970px;
-    }
+  .container {
+    width: 970px;
+  }
 }
 
 @media (min-width: 1200px) {
-    .container {
-        width: 1170px;
-    }
+  .container {
+    width: 1170px;
+  }
 }
 
 @media (max-width: 600px) {
-    .card {
-        width: 65px;
-        height: 65px;
-    }
-    .gameBoard {
-        width: 100%;
-        margin-left: 0;
-    }
-    .details .fa {
-        font-size: 26px;
-    }
-    .title {
-        font-size: 36px;
-    }
-    .modal {
-        font-size: 15px;
-    }
-    .modal-score {
-        line-height: 20px;
-    }
+  .card {
+    width: 65px;
+    height: 65px;
+  }
+  .gameBoard {
+    width: 100%;
+    margin-left: 0;
+  }
+  .details .fa {
+    font-size: 26px;
+  }
+  .title {
+    font-size: 36px;
+  }
+  .modal {
+    font-size: 15px;
+  }
+  .modal-score {
+    line-height: 20px;
+  }
 }
