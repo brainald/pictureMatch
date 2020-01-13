@@ -16,7 +16,7 @@ class Game {
   init = () => {
     let cols = document.getElementsByClassName("card");
 
-    body.style.setProperty("--bgcolor1", level*22.5);
+    body.style.setProperty("--bgcolor1", level * 22.5);
     if (level > 10) {
       gameBoard.style.width = "100%";
       for (let i = 0; i < cols.length; i++) {
