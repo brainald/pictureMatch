@@ -88,8 +88,8 @@ ul {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 125px;
-  height: 125px;
+  width: 115px;
+  height: 115px;
   text-align: center;
   margin: 2%;
   background-color: black;
@@ -147,6 +147,31 @@ i {
 }
 
 /* Animations */
+
+.cardHover:hover {
+  animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+@keyframes shake {
+  10%, 90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+  
+  20%, 80% {
+    transform: translate3d(2px, 0, 0);
+  }
+
+  30%, 50%, 70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+
+  40%, 60% {
+    transform: translate3d(4px, 0, 0);
+  }
+}
 
 @keyframes flipInY {
   from {
@@ -444,5 +469,8 @@ input[type="range"].slider:focus::-ms-fill-upper {
   }
   .modal-score {
     line-height: 20px;
+  }
+  .card .fa {
+    font-size:30px
   }
 }

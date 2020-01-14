@@ -17,19 +17,15 @@ class Game {
     let cols = document.getElementsByClassName("card");
 
     body.style.setProperty("--bgcolor1", level * 22.5);
-    if (level > 10) {
-      gameBoard.style.width = "100%";
-      for (let i = 0; i < cols.length; i++) {
-        cols[i].style.width = "115px";
-        cols[i].style.height = "115px";
-      }
-    } else {
-      gameBoard.style.width = "65%";
-      for (let i = 0; i < cols.length; i++) {
-        cols[i].style.width = "125px";
-        cols[i].style.height = "125px";
+
+    if (!isRestartClicked) {
+      if (level > 10) {
+        gameBoard.style.width = "100%";
+      } else {
+        gameBoard.style.width = "65%";
       }
     }
+
     clearTimeout(this.mySetTimeout);
     this.clearAllCardsClasses();
     this.twoCard = [];
@@ -123,6 +119,7 @@ class Game {
     this.twoCard[0].setVisible(false);
     this.twoCard[1].setVisible(false);
     this.manageStyleClassToCards("remove", "unmatched");
+    this.manageStyleClassToCards("add", "cardHover");
     this.twoCard = [];
   };
 
@@ -135,6 +132,7 @@ class Game {
     if (this.twoCard.length < 2) {
       this.twoCard.push(card);
       card.setVisible(true);
+      card.cardObj.classList.remove("cardHover");
       tapSound.play();
 
       card.cardObj.onclick = null; // disable onclick event until check eqaualiti twoCards
