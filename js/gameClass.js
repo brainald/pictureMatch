@@ -10,6 +10,7 @@ class Game {
     this.cards.forEach(card => {
       card.cardObj.classList.remove("matched");
       card.cardObj.classList.remove("unmatched");
+      card.cardObj.classList.add("cardHover");
     });
   }
 

@@ -26,7 +26,6 @@ const createCardList = () => {
   let cards = icons.map(value => {
     let li = document.createElement("li");
     li.classList.add("card");
-    li.classList.add("cardHover");
     let item = document.createElement("i");
     item.classList.add(faClass);
     item.classList.add(value);
