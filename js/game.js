@@ -1,4 +1,4 @@
-const body = document.getElementsByTagName("body")[0];
+const html = document.getElementsByTagName("html")[0];
 const gameBoard = document.getElementsByClassName("gameBoard")[0];
 const restart = document.getElementsByClassName("restart")[0];
 const actualScore = document.getElementById("actualscore");

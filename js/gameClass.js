@@ -17,7 +17,7 @@ class Game {
   init = () => {
     let cols = document.getElementsByClassName("card");
 
-    body.style.setProperty("--bgcolor1", level * 22.5);
+    html.style.setProperty("--bgcolor1", level * 22.5);
 
     if (!isRestartClicked) {
       if (level > 10) {
